@@ -10,6 +10,10 @@
     --background-iteam-color: #f5f4fa;
     --main-font: 'Roboto', sans-serif;
     --logo-font: 'Raleway', sans-serif;
+
+    /* card-set */
+    --item: 3;
+    --indent: 30px;
 }
 body{
     font-family:var(--main-font);
@@ -23,6 +27,12 @@ margin-top: 0;
 p:last-child{
     margin: 0;
 }
+img{
+    display: block;
+}
+address{
+    font-style: normal;
+}
 .list {
     list-style: none;
     margin: 0;
@@ -33,7 +43,10 @@ p:last-child{
     text-decoration: none;
     color: currentColor;
 }
-
+.section{
+    padding-top: 94px;
+    padding-bottom: 94px;
+}
 .hidden-element {
     opacity: 0;
 }
@@ -41,15 +54,33 @@ p:last-child{
 /* cтили для container */
 
 .container{
-    outline: 2px solid red;
-    outline-offset: -2px;
+    /* outline: 2px solid red;
+    outline-offset: -2px; */
     width: 1200px;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
 }
+
+/* сетка на флексах */
+.card-set {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: calc(-1 * var(--indent) / 2);
+}
+
+.card-set-item {
+    flex-basis: calc((100% - var(--indent) * var(--item)) / var(--item));
+
+    margin: calc(var(--indent) / 2);
+}
+
 /* Верхня линия header */
+.header{
+    border-bottom: 1px solid #ECECEC;
+}
 .header-container{
     display: flex;
     align-items: center;
@@ -117,12 +148,25 @@ color: var(--accent-color);
 .contact:hover,.contact:focus{
     color: var(--accent-color);
 }
+
+/* Hero section */
+
+.hero{
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
 /* Шапка голавной */
 
 .solution-section{
     background: #2F303A;
 }
 .business-solution{
+    width: 696px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+
     font-weight: 900;
     font-size: 44px;
     line-height: 1.36;
@@ -132,13 +176,23 @@ color: var(--accent-color);
     color: var(--second-title-color);
 }
 .btn-clik{
-   font-family: inherit;
-   font-weight: 700;
-   font-size: 16px;
-   line-height: 1.87;
-   color: #ffffff;
-   background-color: var(--accent-color);
-   cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 32px;
+
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.9;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+
+    background-color: var(--accent-color);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
 }
 .btn-clik:hover{
     background-color: #188ce8;
@@ -146,6 +200,19 @@ color: var(--accent-color);
 
 /* Особености */
 
+/* benefits section */
+.benefits {
+    padding-bottom: 47px;
+}
+
+.benefits-list {
+    --item: 4;
+}
+
+/* features section */
+.features {
+    padding-top: 47px;
+}
 .action{
     font-weight: 700;
     font-size: 14px;
@@ -170,11 +237,22 @@ color: var(--accent-color);
 }
 
 /* Наша команда */
-.team-section{
+.team{
     background: var(--background-iteam-color);
 }
+.team-list{
+    --item:4;
+}
 .team-item{
-    background-color: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.team-wrapper{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: #FFFFFF;
 }
 .our-team{
     font-weight: 700;
@@ -203,9 +281,18 @@ color: var(--accent-color);
 .page-footer{
     background: #2F303A;
 }
+.footer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
 
+.footer-item:not(:last-child) {
+    margin-bottom: 9px;
+}
 .address-footer{
-    font-style: normal;
+    margin-top: 20px;
+
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.7;
     letter-spacing: 0.03em;
@@ -228,25 +315,48 @@ color: var(--accent-color);
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
 }
+.contact-footer:hover,
+.contact-footer:focus{
+    color: #188ce8;
+}
 
 /* Портфолио */
-
+.filter-list{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.filter-item:not(:last-child){
+    margin-right: 8px;
+}
 .filter-btn{
+    padding: 6px 22px;
     font-family: inherit;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.62;
-    text-align: center;
     letter-spacing: 0.03em;
-    cursor: pointer;
+    
     background-color: var(--background-iteam-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 .filter-btn:hover{
     background-color: var(--accent-color);
     color: var(--second-title-color);
 }
+.filter-btn.current{
+    background-color: var(--accent-color);
+    color: var(--second-title-color);
+}
 
 /* Проекти */
+.portfolio-wrapper{
+    padding: 20px 24px;
+    border: 1px solid #EEEEEE;
+    border-top: none;
+}
 .name-prj{
     font-weight: 700;
     font-size: 18px;
